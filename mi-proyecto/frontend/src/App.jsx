@@ -3,7 +3,7 @@ import Products from './components/Products.jsx';
 
 export default function App() {
   return (
-    <main>
+    <main className="store">
       <h1>Tienda de ropa</h1>
       <Products />
     </main>

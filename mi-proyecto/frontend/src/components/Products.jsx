@@ -29,27 +29,27 @@ export default function Products() {
   }, []);
 
   if (loading) {
-    return <p>Cargando productos...</p>;
+    return <p className="catalog-status" role="status">Cargando productos...</p>;
   }
 
   if (error) {
-    return <p role="alert">Error: {error}</p>;
+    return <p className="catalog-status catalog-status--error" role="alert">Error: {error}</p>;
   }
 
   return (
-    <section>
-      <h2>Productos de ropa</h2>
+    <section className="catalog" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">Productos de ropa</h2>
 
       {products.length === 0 ? (
-        <p>No hay productos disponibles.</p>
+        <p className="catalog-status">No hay productos disponibles.</p>
       ) : (
-        <ul>
+        <ul className="products-grid">
           {products.map((product) => (
-            <li key={product.id}>
+            <li className="product-card" key={product.id}>
               <h3>{product.name}</h3>
-              <p>Categoría: {product.category}</p>
-              <p>Precio: {product.price.toFixed(2)}</p>
-              <p>Stock: {product.stock}</p>
+              <p className="product-category">Categoría: {product.category}</p>
+              <p className="product-price">Precio: <strong>{product.price.toFixed(2)}</strong></p>
+              <p className="product-stock">Stock: {product.stock}</p>
             </li>
           ))}
         </ul>
